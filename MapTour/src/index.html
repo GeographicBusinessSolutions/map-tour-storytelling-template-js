@@ -27,7 +27,7 @@
 				// - Web map and application can be dynamically specified through url parameters (webmap and appid) 
 				//   if the authorizedOwners property is specified (see below)
 				// - If an application id is specified, the webmap configuration isn't used
-				webmap: "",
+				webmap: "a738cb0accc548319cba5bde3ab2fb2b",
 				appid: "",
 				// Optional list of authorized application or web map owners
 				// Has to be specified when using appid or webmap url parameters (e.g. ["user1"], ["user1", "user2"])
@@ -160,6 +160,57 @@
 		</script>
 	</head>
 	<body class="claro">
+        <style>
+            /* gbs da - place custom css in here
+             will override others */
+
+            /* text colour in header */
+            #header {
+                background-color: #ffffff;
+                color: #000000;
+            }
+            .social .msLink, .social .msLink a {
+                color: #000000;
+
+            }
+
+            /* not needed anymore - esri template does this as below */
+            /*#headerDesktop img {
+                *//*display: block;*//*
+                float: right;
+                *//*margin-right: 200px;*//*
+                margin-top: 5px;
+                margin-right: 20px;
+            }
+            #header a {
+                display: block;
+            }*/
+            
+            #headerDesktop
+            {
+                background: url("resources/banner.jpg");
+            }
+
+            /*remove bottom border */
+            #header {
+                background: none !important;
+            }
+
+            #headerDesktop .logo img {
+                 /*gbs da - remove right logo, logo now part of background*/
+                visibility: hidden;
+            }
+
+            #locationSwitcher {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 1000;
+            }
+
+        </style>
+	
+	
 		<div id="header">
 			<!-- Mobile header -->
 			<div id="headerMobile" class="firstDisplay">
@@ -217,6 +268,7 @@
 			<div id="mapPanel">
 				<div id="mainMap">
 					<div id="hoverInfo"></div>
+                    <div id="locationSwitcher" ></div>
 				</div>
 			</div>
 			<!-- Picture panel -->

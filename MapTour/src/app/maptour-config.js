@@ -8,11 +8,11 @@ APPCFG = {
 	EMBED: false,
 	
 	// Header Logo
-	HEADER_LOGO_URL: "resources/icons/esri-logo.png",
-	HEADER_LOGO_TARGET: "http://www.esri.com",
+	HEADER_LOGO_URL: "resources/logo.png",
+	HEADER_LOGO_TARGET: "http://www.gbs.co.nz/",
 	// Header top right link
-	HEADER_LINK_TEXT: "A story map",
-	HEADER_LINK_URL: "http://storymaps.esri.com/home/",
+	HEADER_LINK_TEXT: "A GBS story map",
+	HEADER_LINK_URL: "http://www.gbs.co.nz/",
 	// Control display of Facebook and Twitter links
 	HEADER_SOCIAL: {
 		facebook: true,

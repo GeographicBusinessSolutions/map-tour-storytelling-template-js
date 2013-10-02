@@ -6,6 +6,9 @@ define(["storymaps/maptour/core/WebApplicationData",
 		"storymaps/ui/multiTips/MultiTips",
 		"storymaps/maptour/ui/desktop/Carousel",
 		"storymaps/maptour/ui/desktop/PicturePanel",
+		
+        "storymaps/maptour/ui/LocationSwitcher",
+		
 		// Mobile UI
 		"storymaps/maptour/ui/mobile/IntroView",
 		"storymaps/maptour/ui/mobile/ListView",
@@ -37,6 +40,9 @@ define(["storymaps/maptour/core/WebApplicationData",
 		MultiTips,
 		DesktopCarousel,
 		PicturePanel,
+		
+		LocationSwitcher,
+		
 		IntroView,
 		ListView,
 		InfoView,
@@ -100,6 +106,10 @@ define(["storymaps/maptour/core/WebApplicationData",
 				app.mobileInfoView = new InfoView("#infoCarousel");
 				app.mobileCarousel = new MobileCarousel("#footerMobile", app.isInBuilderMode);
 				
+				// gbs da
+                app.locationSwitcher = new LocationSwitcher("#locationSwitcher");
+				
+				
 				addMapTourBusinessToEsriGraphic();
 				
 				topic.subscribe("CORE_UPDATE_EXTENT", this.setMapExtent);
@@ -135,8 +145,44 @@ define(["storymaps/maptour/core/WebApplicationData",
 					}
 				);
 				
+				// gbs da set timeout so image reloads itself
+                setInterval(this.reloadImageOnTimeout, 1000 * 60 * 1);
+				
+				
 				return true;
 			};
+			
+			
+			this.reloadImageOnTimeout = function () {
+                //alert('something');
+
+                // Intro record
+                if (app.data.getCurrentIndex() == null) {
+                    /*app.mobileIntroView.hide();
+                    app.isFirstUserAction = true;
+                    dojo.disconnect(app.handleFirstExtentChange);*/
+                }
+
+                var index = app.data.getCurrentIndex();
+                if (index > -1) {
+                    //selectedPointChange_before();
+                    //app.data.setCurrentPointByIndex(index);
+
+                    // this will refresh the crossfader image
+                    selectedPointChange_after(app.data.getCurrentGraphic());
+
+                }
+                else {
+                    //alert('missed');
+                    /*var graphic = app.data.getCurrentGraphic();
+                    if (! visibleMapContains(graphic.geometry))
+                        _this.centerMap(graphic.geometry);
+                    checkPopoverState();*/
+                }
+
+            };
+			
+			
 			
 			this.webmapLoaded = function()
 			{
@@ -213,7 +259,10 @@ define(["storymaps/maptour/core/WebApplicationData",
 					! app.data.sourceIsNotFSAttachments(),
 					MapTourHelper.isModernLayout()
 				);
-				
+
+
+                app.locationSwitcher.init();
+
 				// FeatureLayer
 				if ( app.data.sourceIsFS() ) {
 					// Give full editing privileges for hosted FS
