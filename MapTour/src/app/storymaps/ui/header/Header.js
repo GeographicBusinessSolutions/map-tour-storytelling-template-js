@@ -198,7 +198,7 @@ define(["storymaps/ui/inlineFieldEdit/InlineFieldEdit",
 				var options = 'text=' + encodeURIComponent($(selector + ' #headerMobile .title').html())
 								+ '&url=' + encodeURIComponent(document.location.href)
 								+ '&related=EsriStoryMaps'
-								+ '&hashtags=storymap'; 
+								+ '&hashtags=storymap&via=GBS_NZ'; 
 			
 				window.open(
 					'https://twitter.com/intent/tweet?' + options, 
