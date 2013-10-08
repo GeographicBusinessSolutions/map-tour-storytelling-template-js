@@ -15,19 +15,37 @@ define(["esri/geometry"
             {
                 label: "Auckland",
                 extent: {
-                    xmin: 19392146.085744467,
-                    ymin: -4480672.864064483,
-                    xmax: 19528509.74420527,
-                    ymax: -4366934.565976096
+                    xmin: 1740000,
+                    ymin: 5891288,
+                    xmax: 1775500,
+                    ymax: 5934402
                 }
             },
             {
                 label: "Wellington",
                 extent: {
-                    xmin: 19392035.11870227,
-                    ymin: -5107967.074494227,
-                    xmax: 19528398.777163073,
-                    ymax: -4994228.77640584
+                    xmin: 1746555,
+                    ymin: 5423633,
+                    xmax: 1766041,
+                    ymax: 5448378
+                }
+            },
+            {
+                label: "Christchurch",
+                extent: {
+                    xmin: 1559821,
+                    ymin: 5177172,
+                    xmax: 1577847,
+                    ymax: 5193705
+                }
+            },
+            {
+                label: "Dunedin",
+                extent: {
+                    xmin: 1404077,
+                    ymin: 4913699,
+                    xmax: 1408197,
+                    ymax: 4918263
                 }
             }
         ];

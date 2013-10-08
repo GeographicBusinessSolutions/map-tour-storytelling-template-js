@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<title></title>
@@ -27,7 +27,7 @@
 				// - Web map and application can be dynamically specified through url parameters (webmap and appid) 
 				//   if the authorizedOwners property is specified (see below)
 				// - If an application id is specified, the webmap configuration isn't used
-				webmap: "a738cb0accc548319cba5bde3ab2fb2b",
+			    webmap: "a738cb0accc548319cba5bde3ab2fb2b",
 				appid: "",
 				// Optional list of authorized application or web map owners
 				// Has to be specified when using appid or webmap url parameters (e.g. ["user1"], ["user1", "user2"])
@@ -174,21 +174,11 @@
 
             }
 
-            /* not needed anymore - esri template does this as below */
-            /*#headerDesktop img {
-                *//*display: block;*//*
-                float: right;
-                *//*margin-right: 200px;*//*
-                margin-top: 5px;
-                margin-right: 20px;
-            }
-            #header a {
-                display: block;
-            }*/
-            
+            /* Override Header  - SP*/
             #headerDesktop
             {
                 background: url("resources/banner.jpg");
+                background-repeat: no-repeat;
             }
 
             /*remove bottom border */
