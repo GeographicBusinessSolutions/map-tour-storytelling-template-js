@@ -63,7 +63,7 @@ define(["esri/map",
 		// Values are enforced at build time
 		var CONFIG = {
 			forcePreviewScreen: "TPL_PREVIEW_FALSE", // TPL_PREVIEW_FALSE || TPL_PREVIEW_TRUE
-			environment: "TPL_ENV_DEV" // TPL_ENV_DEV || TPL_ENV_PRODUCTION
+			environment: "TPL_ENV_PRODUCTION" // TPL_ENV_DEV || TPL_ENV_PRODUCTION
 		};
 		
 		var _mainView = null;
@@ -94,14 +94,14 @@ define(["esri/map",
 			
 			var isInBuilderMode = builder != null && Helper.getAppID(isProd());
 
-			// Ignore index.html configuration on AGOL/Portal and development (except proxy/sharing URL)
+		    // Ignore index.html configuration on AGOL/Portal and development (except proxy/sharing URL)
 			if( Helper.isArcGISHosted() || ! isProd() )
 				configOptions = {
 					proxyurl: configOptions.proxyurl,
 					sharingurl: configOptions.sharingurl
 				};
 
-			if( ! Config.checkConfigFileIsOK() ) {
+		    if( ! Config.checkConfigFileIsOK() ) {
 				initError("invalidConfig");
 				return;
 			}
@@ -140,8 +140,8 @@ define(["esri/map",
 			if ( ! _mainView.init(this) )
 				return;
 			
-			// Automatic login in development mode
-			if ( !isProd() ) {
+			// Automatic login in development mode //GBS - SBP, altered to allow autologin in PROD mode
+			if ( !isProd() || isProd()) {
 				on(IdentityManager, 'dialog-create', function(){
 					on(IdentityManager.dialog, 'show', function(){
 						IdentityManager.dialog.txtUser_.set('value', 'guest');
@@ -271,7 +271,7 @@ define(["esri/map",
 			topic.subscribe("CORE_RESIZE", handleWindowResize);
 			
 			loadingIndicator.setMessage(i18n.viewer.loading.step2);
-			
+
 			// Mobile carousel and list view numbering
 			Helper.addCSSRule(".tpIcon {" + MapTourHelper.getSymbolMobileClip() + "}");
 
