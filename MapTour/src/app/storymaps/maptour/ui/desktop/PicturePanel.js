@@ -135,6 +135,13 @@ define(["storymaps/ui/crossfader/CrossFader",
 				if( isInBuilderMode && app.data.getCurrentAttributes() == null )
 					$(".editPictureButtons", panel).hide();
 			}
+
+            function refreshPicture(picurl, name, caption, isModernLayout, placardIsUnder, mediaIsImg)
+            {
+                // gbs - only refresh image, not the point
+                if( crossfader )
+                    crossfader.setSource(picurl, name, caption, _isModernLayout, _placardIsUnder, _mediaIsImg);
+            }
 	
 			function updatePicture(picurl, name, caption, thumburl, buttonStatus, isModernLayout, placardIsUnder, mediaIsImg)
 			{
@@ -825,6 +832,7 @@ define(["storymaps/ui/crossfader/CrossFader",
 				init: init,
 				initLocalization: initLocalization,
 				updatePicture: updatePicture,
+                refreshPicture: refreshPicture,
 				clean: clean,
 				resize: resize,
 				saveEdits: saveEdits,

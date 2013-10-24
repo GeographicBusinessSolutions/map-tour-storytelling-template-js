@@ -145,7 +145,7 @@ define(["storymaps/maptour/core/WebApplicationData",
 					}
 				);
 				
-				// gbs da set timeout so image reloads itself
+				// gbs da set timeout so image reloads itself regularly
                 setInterval(this.reloadImageOnTimeout, 1000 * 60 * 1);
 				
 				
@@ -154,30 +154,14 @@ define(["storymaps/maptour/core/WebApplicationData",
 			
 			
 			this.reloadImageOnTimeout = function () {
-                //alert('something');
 
-                // Intro record
-                if (app.data.getCurrentIndex() == null) {
-                    /*app.mobileIntroView.hide();
-                    app.isFirstUserAction = true;
-                    dojo.disconnect(app.handleFirstExtentChange);*/
-                }
+                console.log('mainview - refreshing NZTA image');
 
                 var index = app.data.getCurrentIndex();
-                if (index > -1) {
-                    //selectedPointChange_before();
-                    //app.data.setCurrentPointByIndex(index);
+                if (index != null && index > -1) {
 
                     // this will refresh the crossfader image
-                    selectedPointChange_after(app.data.getCurrentGraphic());
-
-                }
-                else {
-                    //alert('missed');
-                    /*var graphic = app.data.getCurrentGraphic();
-                    if (! visibleMapContains(graphic.geometry))
-                        _this.centerMap(graphic.geometry);
-                    checkPopoverState();*/
+                    refreshImageForRecord(app.data.getCurrentGraphic());
                 }
 
             };
@@ -794,7 +778,26 @@ define(["storymaps/maptour/core/WebApplicationData",
 						app.builderMoveEvents.clean();
 				}
 			}
-	
+
+
+            function refreshImageForRecord(record)
+            {
+                // gbs - refresh image to keep it current
+
+                console.log("maptour.core.Core - refreshImageForRecord");
+                var attributes = record ? record.attributes : app.data.getCurrentAttributes();
+
+                app.desktopPicturePanel.refreshPicture(
+                    attributes.getURL(),
+                    attributes.getName(),
+                    attributes.getDescription(),
+                    MapTourHelper.isModernLayout(),
+                    WebApplicationData.getPlacardPosition() === "under" || configOptions.placardPosition === "under",
+                    MapTourHelper.mediaIsSupportedImg(attributes.getURL())
+                );
+
+            }
+
 			function selectedPointChange_after(forcedRecord)
 			{
 				console.log("maptour.core.Core - selectedPointChange_after");

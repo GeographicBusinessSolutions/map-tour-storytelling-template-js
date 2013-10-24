@@ -55,7 +55,7 @@
 
 		<script type="text/javascript">
 			var version = '2.1';
-			var isProduction = false;
+			var isProduction = true;
 
 			function loadJS(url, isExternal)
 			{
@@ -195,8 +195,20 @@
                 position: absolute;
                 top: 10px;
                 right: 10px;
-                z-index: 1000;
+                z-index: 2;
             }
+
+
+            #gbsLink {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 111px;
+                width: 288px;
+
+                z-index: 2;
+            }
+
 
         </style>
 	
@@ -219,6 +231,7 @@
 			<!-- Desktop header -->
 			<div id="headerDesktop">
 				<div class="textArea">
+                    <a href="http://gbs.co.nz/" target="_blank" id="gbsLink" ></a>
 					<h1 class="title"></h1>
 					<h2 class="subtitle"></h2>
 				</div>

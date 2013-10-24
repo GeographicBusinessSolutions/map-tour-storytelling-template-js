@@ -1,6 +1,7 @@
-define(["esri/geometry"
+define(["esri/geometry",
+        "dojo/topic"
         ],
-		function(Geometry){
+		function(Geometry, topic){
 	/**
 	 * LocationSwitcher
 	 * @class LocationSwitcher
@@ -19,7 +20,18 @@ define(["esri/geometry"
                     ymin: 5891288,
                     xmax: 1775500,
                     ymax: 5934402
-                }
+                },
+                startRecord: 0
+            },
+            {
+                label: "Hamilton",
+                extent: {
+                    xmin: 1792510,
+                    ymin: 5810746,
+                    xmax: 1808326,
+                    ymax: 5821204
+                },
+                startRecord: 80
             },
             {
                 label: "Wellington",
@@ -28,7 +40,8 @@ define(["esri/geometry"
                     ymin: 5423633,
                     xmax: 1766041,
                     ymax: 5448378
-                }
+                },
+                startRecord: 99
             },
             {
                 label: "Christchurch",
@@ -37,7 +50,8 @@ define(["esri/geometry"
                     ymin: 5177172,
                     xmax: 1577847,
                     ymax: 5193705
-                }
+                },
+                startRecord: 71
             },
             {
                 label: "Dunedin",
@@ -46,7 +60,8 @@ define(["esri/geometry"
                     ymin: 4913699,
                     xmax: 1408197,
                     ymax: 4918263
-                }
+                },
+                startRecord: 76
             }
         ];
 
@@ -54,15 +69,23 @@ define(["esri/geometry"
 
         function comboboxChange() {
 
-             var extentIndex = $(this).val();
-             var extentVal = locationArray[extentIndex].extent;
+            var locationIndex = $(this).val();
+            var thisLocation = locationArray[locationIndex];
+
+             var extentVal = thisLocation.extent;
              extentVal.spatialReference = app.map.spatialReference;
              var extent = new Geometry.Extent(extentVal);
 
              console.log(extent.toJson());
              console.log(app.map.extent.toJson());
 
-             dojo.publish("CORE_UPDATE_EXTENT", extent);
+             topic.publish("CORE_UPDATE_EXTENT", extent);
+
+            // when changing region, also set the selected record
+            if (thisLocation.hasOwnProperty('startRecord')) {
+                var i = thisLocation.startRecord;
+                topic.publish("CAROUSEL_CLICK", i);
+            }
 
         }
 
