@@ -242,7 +242,7 @@
 						</span>
 						<div class="shareIcon share_facebook"></div>
 						<div class="shareIcon share_twitter"></div>
-						<a class="shareIcon share_bitly"></a>
+						<!-- a class="shareIcon share_bitly"></a -->
 					</div>
 					<div class="logo">
 						<a target="_blank">
@@ -1088,10 +1088,11 @@
 					require([
 							"dojo/i18n!./resources/nls/template.js?v=" + version, 
 							"storymaps/ui/loadingIndicator/LoadingIndicator", 
-							"esri/urlUtils", 
+							"esri/urlUtils",
 							"templateConfig/commonConfig.js?v=" + version,
 							"dojo/domReady!", 
 							"dojo/ready"
+
 						], function(
 							_i18n, 
 							LoadingIndicator, 

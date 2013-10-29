@@ -63,7 +63,7 @@ define(["esri/map",
 		// Values are enforced at build time
 		var CONFIG = {
 			forcePreviewScreen: "TPL_PREVIEW_FALSE", // TPL_PREVIEW_FALSE || TPL_PREVIEW_TRUE
-			environment: "TPL_ENV_PRODUCTION" // TPL_ENV_DEV || TPL_ENV_PRODUCTION
+			environment: "TPL_ENV_PRODUCTION" // TPL_ENV_DEV || TPL_ENV_PRODUCTION //
 		};
 		
 		var _mainView = null;
@@ -176,6 +176,9 @@ define(["esri/map",
 			if( ! configOptions.proxyurl )
 				configOptions.proxyurl = APPCFG.DEFAULT_PROXY_URL;
 			esriConfig.defaults.io.proxyUrl = location.protocol + configOptions.proxyurl;
+
+            // gbs da - CORS detection doesn't seem to work, so switching to always using a proxy
+            esriConfig.defaults.io.alwaysUseProxy = true;
 
 			// Allow IE9 to save over HTTP
 			IdentityManager && IdentityManager.setProtocolErrorHandler(function(){ return true; });

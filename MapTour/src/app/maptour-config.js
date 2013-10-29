@@ -52,7 +52,7 @@ APPCFG = {
 	},
 	
 	// Pin has to be numbered from 1 to that value
-	MAX_ALLOWED_POINTS: 99,
+	MAX_ALLOWED_POINTS: 150,
 	// Ordered list of pin configuration (has to be lower case)
 	PIN_CFG: {
 		r: {
@@ -135,6 +135,6 @@ APPCFG = {
 	// If you are using ArcGIS Online or deploying the template on a Portal instance, you don't have to edit those URL
 	DEFAULT_SHARING_URL: "//www.arcgis.com/sharing/content/items",
 	//DEFAULT_SHARING_URL: "//portal.internal.com/arcgis/sharing/content/items",
-	DEFAULT_PROXY_URL: "//www.arcgis.com/sharing/proxy"
+	DEFAULT_PROXY_URL: "/proxy.ashx"
 	//DEFAULT_PROXY_URL: "//portal.internal.com/arcgis/sharing/proxy"
 };
