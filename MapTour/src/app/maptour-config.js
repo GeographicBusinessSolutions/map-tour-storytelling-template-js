@@ -43,7 +43,7 @@ APPCFG = {
 	
 	// Case insensitive prioritized list of fields name to be used
 	FIELDS_CANDIDATE: {
-		objectid: ['__objectid', 'objectid', 'id', 'fid'],
+		objectid: ['Number'],
 		name: ['name', 'title', 'name-short', 'name-long'],
 		description: ['description', 'caption', 'snippet', 'comment'],
 		color: ['icon_color', 'color', 'style'],
@@ -135,6 +135,6 @@ APPCFG = {
 	// If you are using ArcGIS Online or deploying the template on a Portal instance, you don't have to edit those URL
 	DEFAULT_SHARING_URL: "//www.arcgis.com/sharing/content/items",
 	//DEFAULT_SHARING_URL: "//portal.internal.com/arcgis/sharing/content/items",
-	DEFAULT_PROXY_URL: "/proxy.ashx"
+	DEFAULT_PROXY_URL: "//gbsmaps.azurewebsites.net/proxy.ashx"
 	//DEFAULT_PROXY_URL: "//portal.internal.com/arcgis/sharing/proxy"
 };
